@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Solution {
+class MemoriesScore {
     public int[] solution(String[] name, int[] yearning, String[][] photo) {
         int[] answer = new int[photo.length];
         
