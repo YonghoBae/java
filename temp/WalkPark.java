@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Solution {
+class WalkPark {
     public int[] solution(String[] park, String[] routes) {
         int H = park.length;
         int W = park[0].length();
