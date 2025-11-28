@@ -3,12 +3,13 @@ import java.util.Deque;
 import java.util.Scanner;
 
 public class Gear {
+    static Deque<Integer>[] gear = new Deque[4];
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Deque<Integer>[] gear = new Deque[4];
+
 
         
-
         for(int i=0;i<4;++i){
             gear[i] = new ArrayDeque<>();
             String gearStatus = sc.next();
@@ -17,8 +18,23 @@ public class Gear {
             }
         }
 
-        
+        int k = sc.nextInt();
+        int gearNum, turn;
+        for(int i=0;i<k;++i){
+            gearNum = sc.nextInt() - 1;
+            turn = sc.nextInt();
+
+            for(int j=i;j<4;++j){
+                if(gear[j].)
+            }
+
+            for(int j=i;j>=0;--j){
+
+            }
+        }
     }
+
+
 }
 //1~4 톱니바퀴
 //각 톱니바퀴의 톱니는 N or S
