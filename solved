@@ -1,0 +1,15 @@
+#!/bin/bash
+# 사용법: ./solved 1260 [폴더]
+# src/Main.java 풀이를 src/<폴더>/B1260.java로 보관하고 Main.java를 빈 템플릿으로 초기화
+# 폴더 생략 시 src/inbox/ 에 보관 -> 나중에 Claude Code에서 /classify 로 유형별 분류
+set -e
+cd "$(dirname "$0")"
+n="$1"; [ -n "$n" ] || { echo "사용법: ./solved 문제번호 [폴더]"; exit 1; }
+topic="${2:-inbox}"
+dest="src/$topic/B$n.java"
+[ -e "$dest" ] && { echo "이미 있음: $dest"; exit 1; }
+title=$(curl -sL -m 5 -A 'Mozilla/5.0' "https://www.acmicpc.net/problem/$n" | grep -o '<title>[^<]*' | sed 's/<title>//') || true
+mkdir -p "src/$topic"
+{ echo "package $topic;"; echo; echo "// ${title:-${n}번}"; echo "// https://www.acmicpc.net/problem/$n"; sed "s/\bclass Main\b/class B$n/" src/Main.java; } > "$dest"
+cp .main-template.java src/Main.java
+echo "$dest 저장, Main.java 초기화"

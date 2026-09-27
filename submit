@@ -1,0 +1,7 @@
+#!/bin/sh
+# 사용법: ./submit src/dp/B1463.java            (백준: class Main)
+#         ./submit src/mst/Hanaro.java Solution (SWEA/프로그래머스: class Solution)
+# package 줄 삭제 + 클래스명 변경 후 클립보드 복사 (원본 파일은 그대로)
+f="$1"; c=$(basename "$f" .java); to="${2:-Main}"
+sed -e '/^package /d' -e "s/\bclass $c\b/class $to/" "$f" | iconv -f UTF-8 -t UTF-16LE | clip.exe
+echo "$c -> $to 복사됨"
